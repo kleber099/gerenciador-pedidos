@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, {Component, Fragment} from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';

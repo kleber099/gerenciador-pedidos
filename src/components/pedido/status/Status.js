@@ -6,13 +6,17 @@ import Corpo from '../Corpo'
 class Status extends Component {
   render() {
     const columns = ["Clientes", "Status", "Ações"]
-    const rows = [{"name" : "Cliente1", "status": "CONFERENCIA", "actions": {"act1": "MORE", "act2": "GO", "act3": "CANCEL"}}, 
-                  {"name": "Cliente2", "status" : "PREPARANDO", "actions": {"act1": "MORE", "act2": "GO", "act3": "CANCEL"} }]
+    const rows = [{
+      "name": "Cliente1",
+      "status": "CONFERENCIA",
+      "actions": {"act1": "MORE", "act2": "GO", "act3": "CANCEL"}
+    },
+      {"name": "Cliente2", "status": "PREPARANDO", "actions": {"act1": "MORE", "act2": "GO", "act3": "CANCEL"}}]
 
     return (
       <div className="container ">
-       <table>
-          <Cabecalho columns={columns} />
+        <table>
+          <Cabecalho columns={columns}/>
           <Corpo rows={rows}/>
         </table>
         <Legenda/>
