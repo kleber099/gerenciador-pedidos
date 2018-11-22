@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+
 class Corpo extends Component {
 
   constructor(props) {
@@ -72,7 +73,7 @@ class Corpo extends Component {
   render() {
     return (
       <tbody>
-      {this._listRows()}
+        {this._listRows()}
       </tbody>
     );
   }

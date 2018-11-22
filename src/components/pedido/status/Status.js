@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Legenda from '../Legenda.js'
 import Cabecalho from '../Cabecalho'
-import Corpo from '../Corpo'
+import CorpoStatus from './CorpoStatus.js'
 
 class Status extends Component {
   render() {
@@ -17,7 +17,7 @@ class Status extends Component {
       <div className="container ">
         <table>
           <Cabecalho columns={columns}/>
-          <Corpo rows={rows}/>
+          <CorpoStatus rows={rows}/>
         </table>
         <Legenda/>
       </div>

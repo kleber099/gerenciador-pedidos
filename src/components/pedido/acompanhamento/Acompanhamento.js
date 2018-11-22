@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Cabecalho from '../Cabecalho'
-import Corpo from '../Corpo'
+import CorpoAcompanhamento from './CorpoAcompanhamento'
 import Legenda from '../Legenda'
 
 class Acompanhamento extends Component {
@@ -12,7 +12,7 @@ class Acompanhamento extends Component {
       <div className="container">
         <table>
           <Cabecalho columns={columns}/>
-          <Corpo rows={rows}/>
+          <CorpoAcompanhamento rows={rows}/>
         </table>
         <Legenda/>
       </div>
