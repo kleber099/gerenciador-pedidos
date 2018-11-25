@@ -1,40 +1,33 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class CorpoStatus extends Component {
 
-constructor(props) {
-  super(props);
-}
+  constructor(props) {
+    super(props);
+  }
 
-componentDidMount() {
-  axios.get('http://localhost:3004/pedidos')
-    .then(resp => {
-    console.log(resp.data);
-  });
-}
+  _listRows() {
+    const row = this.props.pedidos.map((row) => {
+      return this._listValuesRow(row)
+    });
+    return row
+  }
 
-_listRows() {
-  const row = this.props.rows.map((row) => {
-    return this._listValuesRow(row)
-  });
-  return row
-}
+  _listValuesRow(row) {
+    const a = <tr>
+      <td> {row.nome} </td>
+      <td>{this._renderStatus(row.status)}</td>
+      <td>
+        <a class="waves-effect waves-light btn-large"> <i class="material-icons center">expand_less</i></a>
+        <a class="waves-effect waves-light btn-large"> <i class="material-icons center">fast_forward</i></a>
+        <a class="waves-effect waves-light btn-large"> <i class="material-icons center">close</i></a>
+      </td>
+    </tr>
+    return a
+  }
 
-_listValuesRow(row) {
- const a = <tr>
-     <td> {row.name} </td>
-     <td>{this._renderStatus(row.status)}</td>
-     <td> 
-       <a class="waves-effect waves-light btn-large"> <i class="material-icons center">expand_less</i></a>
-       <a class="waves-effect waves-light btn-large"> <i class="material-icons center">fast_forward</i></a>
-       <a class="waves-effect waves-light btn-large"> <i class="material-icons center">close</i></a>
-     </td> 
-  </tr>
- return a
-}
-
-_renderStatus(status) {
+  _renderStatus(status) {
     switch (status) {
       case "NOVO":
         return <th><a class="btn-floating btn-medium waves-effect waves-light red"/></th>
@@ -51,14 +44,19 @@ _renderStatus(status) {
     }
   }
 
-render() {
-  return (
-    <tbody>
+  render() {
+    return (
+      <tbody>
       {this._listRows()}
-    </tbody>
-  );
+      </tbody>
+    );
+  }
 }
 
+function mapStateProps(state) {
+  return {
+    pedidos: state.pedido.pedidos
+  }
 }
 
-export default CorpoStatus;
+export default connect(mapStateProps) (CorpoStatus);

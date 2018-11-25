@@ -5,23 +5,14 @@ import CorpoCaixa from './CorpoCaixa'
 
 class Caixa extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      columns:[],
-      rows:[]
-    }
-  }
-
   render() {
-    const columns = ["Clientes", "Status", "Finalizar"]
-    const rows = [{"name" : "Cliente1", "status": "CONFERENCIA", "actions": {"act1": "GO"}}, 
-                  {"name": "Cliente2", "status" : "PREPARANDO", "actions": {"act1": "GO"}}]
+    const columns = ["Clientes", "Status", "Finalizar"];
+
     return (
       <div className="container">
         <table>
-          <Cabecalho columns={columns} />
-          <CorpoCaixa rows={rows}/>
+          <Cabecalho columns={columns}/>
+          <CorpoCaixa/>
         </table>
         <Legenda/>
       </div>

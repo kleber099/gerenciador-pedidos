@@ -5,14 +5,12 @@ import Legenda from '../Legenda'
 
 class Acompanhamento extends Component {
   render() {
-    const columns = ["Clientes", "Tempo de Espera", "Status"]
-    const rows = [{"name": "Cliente1", "tempo": "10m", "status": "CONFERENCIA"},
-      {"name": "Cliente2", "tempo": "90m", "status": "PREPARANDO"}]
+    const columns = ["Clientes", "Tempo de Espera", "Status"];
     return (
       <div className="container">
         <table>
           <Cabecalho columns={columns}/>
-          <CorpoAcompanhamento rows={rows}/>
+          <CorpoAcompanhamento/>
         </table>
         <Legenda/>
       </div>
