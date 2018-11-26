@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 import {changeStatus} from '../../../actions/pedidoActions';
+import * as statusType from '../statusType'
+
 import { bindActionCreators } from 'redux';
 
 class CorpoCaixa extends Component {
@@ -30,17 +32,17 @@ class CorpoCaixa extends Component {
 
   _renderStatus(status) {
     switch (status) {
-      case "NOVO":
+      case statusType.NOVO:
         return <th><a class="btn-floating btn-medium waves-effect waves-light red"/></th>
-      case "PREPARANDO":
+      case statusType.PREPARANDO:
         return <th><a class="btn-floating btn-medium waves-effect waves-light yellow"/></th>
-      case "CONFERENCIA":
+      case statusType.CONFERENCIA:
         return <th><a class="btn-floating btn-medium waves-effect waves-light green"/></th>
-      case "PRONTO":
+      case statusType.PRONTO:
         return <th><a class="btn-floating btn-medium waves-effect waves-light blue"/></th>
-      case "EXCLUIDO":
+      case statusType.EXCLUIDO:
         return <th><a class="btn-floating btn-medium waves-effect waves-light blue-grey lighten-4"/></th>
-      case "PAGO":
+      case statusType.PAGO:
         return <th><a class="btn-floating btn-medium waves-effect waves-light blue-grey lighten-4"/></th>
     }
   }
