@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {changeStatus} from '../../../actions/pedidoActions';
+import { bindActionCreators } from 'redux';
+
 class CorpoCaixa extends Component {
 
   constructor(props) {
@@ -15,11 +18,11 @@ class CorpoCaixa extends Component {
   }
 
   _listValuesRow(pedido) {
-    const row = <tr>
+    const row = <tr key={pedido.id}>
       <td> {pedido.nome} </td>
       <td>{this._renderStatus(pedido.status)}</td>
       <td>
-        <a class="waves-effect waves-light btn-large"> <i class="material-icons center">fast_forward</i></a>
+        <a class="waves-effect waves-light btn-large" onClick = {this._handleClick(pedido)}> <i class="material-icons center">fast_forward</i></a>
       </td>
     </tr>
     return row
@@ -42,6 +45,11 @@ class CorpoCaixa extends Component {
     }
   }
 
+  _handleClick = (pedido) => event => {
+    event.preventDefault();
+    this.props.changeStatus(pedido)
+  }
+
   render() {
     return (
       <tbody>
@@ -58,4 +66,8 @@ function mapStateProps(state) {
   }
 }
 
-export default connect(mapStateProps) (CorpoCaixa);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({changeStatus}, dispatch)
+}
+
+export default connect(mapStateProps, mapDispatchToProps) (CorpoCaixa);

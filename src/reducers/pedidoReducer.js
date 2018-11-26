@@ -9,6 +9,11 @@ export default function pedidoReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
     case actionTypes.CRIAR_PEDIDO:
       return { ...state, pedido: Object.assign({}, action.pedido) };
+    case actionTypes.MUDAR_STATUS:
+      state.pedidos[action.pedido.id] = {
+        ...action.pedido
+      }
+      return { ...state}
     case actionTypes.CARREGAR_PEDIDOS:
       return { ...state, pedidos: action.pedidos };
     default:
