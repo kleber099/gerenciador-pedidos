@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as statusType from '../statusType'
+import * as statusType from '../statusType';
+import {changeStatus, excluirPedido} from '../../../actions/pedidoActions';
+import { bindActionCreators } from 'redux';
 
 class CorpoStatus extends Component {
 
@@ -9,20 +11,22 @@ class CorpoStatus extends Component {
   }
 
   _listRows() {
-    const row = this.props.pedidos.map((row) => {
-      return this._listValuesRow(row)
+    const row = this.props.pedidos.map((pedido) => {
+      if(pedido.visivel){
+        return this._listValuesRow(pedido)
+      }
     });
     return row
   }
 
-  _listValuesRow(row) {
+  _listValuesRow(pedido) {
     const a = <tr>
-      <td> {row.nome} </td>
-      <td>{this._renderStatus(row.status)}</td>
+      <td> {pedido.nome} </td>
+      <td>{this._renderStatus(pedido.status)}</td>
       <td>
         <a class="waves-effect waves-light btn-large"> <i class="material-icons center">expand_less</i></a>
-        <a class="waves-effect waves-light btn-large"> <i class="material-icons center">fast_forward</i></a>
-        <a class="waves-effect waves-light btn-large"> <i class="material-icons center">close</i></a>
+        <a class="waves-effect waves-light btn-large" onClick = {this._handleClick(pedido)}> <i class="material-icons center">fast_forward</i></a>
+        <a class="waves-effect waves-light btn-large" onClick = {this._excludeClick(pedido)}> <i class="material-icons center">close</i></a>
       </td>
     </tr>
     return a
@@ -33,6 +37,10 @@ class CorpoStatus extends Component {
     this.props.changeStatus(pedido)
   }
 
+  _excludeClick = (pedido) => event => {
+    event.preventDefault();
+    this.props.excluirPedido(pedido)
+  }
   _renderStatus(status) {
     switch (status) {
       case statusType.NOVO:
@@ -53,7 +61,7 @@ class CorpoStatus extends Component {
   render() {
     return (
       <tbody>
-      {this._listRows()}
+        {this._listRows()}
       </tbody>
     );
   }
@@ -65,4 +73,8 @@ function mapStateProps(state) {
   }
 }
 
-export default connect(mapStateProps) (CorpoStatus);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({changeStatus, excluirPedido}, dispatch)
+}
+
+export default connect(mapStateProps, mapDispatchToProps) (CorpoStatus);

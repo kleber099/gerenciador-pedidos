@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {changeStatus} from '../../../actions/pedidoActions';
+import {changeStatus}  from '../../../actions/pedidoActions';
 import * as statusType from '../statusType'
 
 import { bindActionCreators } from 'redux';
@@ -13,9 +13,11 @@ class CorpoCaixa extends Component {
   }
 
   _listRows() {
-    const row = this.props.pedidos.map((pedido) => {
-      return this._listValuesRow(pedido)
-    });
+    const row = this.props.pedidos.filter(pedido => pedido.status === statusType.PRONTO).map((pedido) => {
+      if(pedido.visivel){
+        return this._listValuesRow(pedido)
+      }   
+     });
     return row
   }
 

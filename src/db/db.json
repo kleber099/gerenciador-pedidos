@@ -4,19 +4,34 @@
       "id": "1",
       "nome": "João",
       "cpf": "123.123.123-12",
-      "status": "CONFERENCIA",
+      "tempo": "30m",
+      "visivel": true,
+      "status": "PRONTO",
       "descricao": "Descrição pedido 1"
     },
     {
       "id": "2",
       "nome": "José",
+      "visivel": true,
       "cpf": "123.123.123-12",
-      "status": "CONFERENCIA",
+      "tempo": "45m",
+      "status": "NOVO",
       "descricao": "Descrição pedido 2"
     },
     {
       "id": "3",
       "nome": "Maria",
+      "visivel": true,
+      "tempo": "1h",
+      "cpf": "123.123.123-12",
+      "status": "CONFERENCIA",
+      "descricao": "Descrição pedido 3"
+    },
+    {
+      "id": "4",
+      "nome": "Roberto Carlos",
+      "visivel": true,
+      "tempo": "20m",
       "cpf": "123.123.123-12",
       "status": "CONFERENCIA",
       "descricao": "Descrição pedido 3"

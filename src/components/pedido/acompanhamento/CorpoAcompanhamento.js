@@ -9,17 +9,19 @@ class CorpoAcompanhamento extends Component {
   }
 
   _listRows() {
-    const row = this.props.pedidos.map((row) => {
-      return this._listValuesRow(row)
+    const row = this.props.pedidos.map((pedido) => {
+      if(pedido.visivel){
+        return this._listValuesRow(pedido)
+      }    
     });
     return row
   }
 
-  _listValuesRow(row) {
+  _listValuesRow(pedido) {
     const a = <tr>
-      <td> {row.nome} </td>
-      <td> 90m</td>
-      <td>{this._renderStatus(row.status)}</td>
+      <td> {pedido.nome} </td>
+      <td> {pedido.tempo}</td>
+      <td>{this._renderStatus(pedido.status)}</td>
     </tr>
     return a
   }

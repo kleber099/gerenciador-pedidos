@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import * as statusType from '../components/pedido/statusType'
+import * as statusType from '../components/pedido/statusType';
 import axios from 'axios';
 const URL = 'http://localhost:3004/pedidos';
 
@@ -13,6 +13,8 @@ function fowardStatus(status) {
       return statusType.PREPARANDO
     case(statusType.PREPARANDO):
       return statusType.CONFERENCIA
+    case(statusType.CONFERENCIA):
+      return statusType.PRONTO
     case(statusType.PRONTO):
       return statusType.PAGO
     default: 
@@ -25,8 +27,21 @@ export function changeStatus(pedido) {
   return dispatch => {
     const newUrl = URL + `/${pedido.id}`
     axios.put(newUrl,pedido)
-      .then(pedidos => {
-          console.log(pedidos)
+      .then(pedido => {
+          console.log(pedido)
+          dispatch(carregarPedidos());
+    });
+  };
+}
+
+export function excluirPedido(pedido) {
+  pedido.visivel = !pedido.visivel
+  pedido.status = statusType.EXCLUIDO
+  return dispatch => {
+    const newUrl = URL + `/${pedido.id}`
+    axios.put(newUrl,pedido)
+      .then(pedido => {
+          console.log(pedido)
           dispatch(carregarPedidos());
     });
   };
