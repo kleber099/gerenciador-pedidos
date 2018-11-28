@@ -6,7 +6,7 @@
       "cpf": "123.123.123-12",
       "tempo": "30m",
       "visivel": true,
-      "status": "PRONTO",
+      "status": "PAGO",
       "descricao": "Descrição pedido 1"
     },
     {
@@ -15,7 +15,7 @@
       "visivel": true,
       "cpf": "123.123.123-12",
       "tempo": "45m",
-      "status": "NOVO",
+      "status": "EXCLUIDO",
       "descricao": "Descrição pedido 2"
     },
     {
@@ -24,7 +24,7 @@
       "visivel": true,
       "tempo": "1h",
       "cpf": "123.123.123-12",
-      "status": "CONFERENCIA",
+      "status": "EXCLUIDO",
       "descricao": "Descrição pedido 3"
     },
     {
@@ -35,6 +35,42 @@
       "cpf": "123.123.123-12",
       "status": "CONFERENCIA",
       "descricao": "Descrição pedido 3"
+    },
+    {
+      "nome": "jckjdjckdjck",
+      "cpf": "kjdskjdksdjsk",
+      "descricao": "kjcskcjxkcjkxjcxkc",
+      "visivel": true,
+      "status": "NOVO",
+      "tempo": "10m",
+      "id": "oO6gNjy"
+    },
+    {
+      "nome": "cxccxc",
+      "cpf": "CXCXCXCXccxc",
+      "descricao": "cxcxcxcxcxc",
+      "visivel": true,
+      "status": "NOVO",
+      "tempo": "10m",
+      "id": "dlHkSSA"
+    },
+    {
+      "nome": "cdcxcxc",
+      "cpf": "xcxcxcxc",
+      "descricao": "zxzxzxzxzxz",
+      "visivel": true,
+      "status": "NOVO",
+      "tempo": "10m",
+      "id": "nQcHYeM"
+    },
+    {
+      "nome": " xcdcdcdc",
+      "cpf": "xzxzxzx",
+      "descricao": "zxzxzxzx",
+      "visivel": true,
+      "status": "NOVO",
+      "tempo": "10m",
+      "id": "IqUr~v3"
     }
   ]
 }

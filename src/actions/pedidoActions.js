@@ -1,10 +1,15 @@
 import * as types from './actionTypes';
 import * as statusType from '../components/pedido/statusType';
 import axios from 'axios';
+
 const URL = 'http://localhost:3004/pedidos';
 
 export function criarPedido(pedido) {
-  return { type: types.CRIAR_PEDIDO, pedido };
+
+  return dispatch => {
+    axios.post(URL, pedido)
+      .then(() => dispatch(carregarPedidos()));
+  }
 }
 
 function fowardStatus(status) {
@@ -28,7 +33,6 @@ export function changeStatus(pedido) {
     const newUrl = URL + `/${pedido.id}`
     axios.put(newUrl,pedido)
       .then(pedido => {
-          console.log(pedido)
           dispatch(carregarPedidos());
     });
   };
@@ -41,7 +45,6 @@ export function excluirPedido(pedido) {
     const newUrl = URL + `/${pedido.id}`
     axios.put(newUrl,pedido)
       .then(pedido => {
-          console.log(pedido)
           dispatch(carregarPedidos());
     });
   };
